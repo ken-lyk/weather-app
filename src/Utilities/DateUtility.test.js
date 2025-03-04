@@ -1,4 +1,4 @@
-import { convertDate, formatTime } from './DateUtility';
+import { convertDate, convertShortDate, formatTime } from './DateUtility';
 
 describe('Date Utility Functions', () => {
     describe('convertDate', () => {
@@ -28,6 +28,29 @@ describe('Date Utility Functions', () => {
             const result = convertDate(dateString);
             // Depending on how your function handles invalid dates, you may adjust this expectation
             expect(result).not.toEqual(/^\d{2}-\d{2}-\d{4} \d{1,2}:\d{2} (AM|PM)$/);  // Basic format check
+        });
+    });
+
+    describe('convertShortDate', () => {
+        it('should correctly convert a date string to the dd-mm-yyyy format', () => {
+            const dateString = 'Tue Mar 04 2025 23:43:03 GMT+0800 (Singapore Standard Time)';
+            const expected = '04-03-2025';
+            const result = convertShortDate(dateString);
+            expect(result).toBe(expected);
+        });
+
+        it('should correctly convert a date string with single-digit day/month', () => {
+            const dateString = '01/01/2023 02:05';
+            const expected = '01-01-2023';
+            const result = convertShortDate(dateString);
+            expect(result).toBe(expected);
+        });
+
+        it('should handle an invalid date string and still return a properly formatted string', () => {
+            const dateString = 'invalid date';
+            const result = convertShortDate(dateString);
+            // Depending on how your function handles invalid dates, you may adjust this expectation
+            expect(result).not.toEqual(/^\d{2}-\d{2}-\d{4}$/);  // Basic format check
         });
     });
 

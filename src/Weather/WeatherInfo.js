@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertDate, formatTime } from '../Utilities/DateUtility';
+import { convertDate, convertShortDate, formatTime } from '../Utilities/DateUtility';
 import sun from './../Assets/sun.png'
 import { toTitleCase } from '../Utilities/StringUtility';
 import { useMediaQuery } from 'react-responsive';
@@ -52,7 +52,7 @@ const WeatherInfo = ({ weatherData }) => {
             </div>
             <div className="flex items-center justify-between text-gray-700 text-ms">
                 <div className='font-bold'>{location}, {country}</div>
-                <div>{convertDate(new Date())}</div>
+                <div>{convertShortDate(new Date())}</div>
             </div>
             <div className="flex items-center justify-between text-gray-700 text-ms">
                 <div>Humidity: {humidity}%</div>
@@ -68,7 +68,7 @@ const WeatherInfo = ({ weatherData }) => {
     }
 
     return (
-        <div className='min-w-[400px]'>
+        <div className='min-w-[250px]'>
             <div className="flex w-full items-center mb-2" style={{
                 flexDirection: 'row-reverse',
                 marginTop: -120,
@@ -83,7 +83,7 @@ const WeatherInfo = ({ weatherData }) => {
                     </div>
                     <div className="flex w-1/2 w-full items-center justify-end">
                         <img src={iconUrl} alt={weatherDescription} className="w-24 h-24" />
-                        <span className="text-sm">{weatherDescription}</span>
+                        {!isMobile && <span className="text-sm">{weatherDescription}</span>}
                     </div>
                 </div>
                 {isMobile && renderMobileView()}
