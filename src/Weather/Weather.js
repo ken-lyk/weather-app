@@ -10,9 +10,20 @@ import WeatherHistory from './WeatherHistory';
 
 const Weather = () => {
     // const [backgroundImage, setBackgroundImage] = useState(bgWhite); // Initial image
+    let defaultHistories = []
+
+    const storedHistory = localStorage.getItem('searchHistory');
+    if (storedHistory && storedHistory !== null) {
+        const storedHistoryObj = JSON.parse(storedHistory) ?? []
+        if (storedHistoryObj.length > 0) {
+            defaultHistories = storedHistoryObj
+        }
+    }
+
+
     const [searchCity, setSearchCity] = useState('')
     const [weatherData, setWeatherData] = useState(null)
-    const [histories, setHistories] = useState([])
+    const [histories, setHistories] = useState(defaultHistories)
     const DEFAULT_CITY = 'Singapore'
 
     const getDefaultCity = () => {
@@ -28,7 +39,7 @@ const Weather = () => {
         return location
     }
 
-    const [selectedData, setSelectedData] = useState(getDefaultCity())
+    const [selectedData, setSelectedData] = useState(defaultHistories.length > 0 ? defaultHistories[0] : getDefaultCity())
 
     useEffect(() => {
         const countryCodeList = [...new Set(Cities.map(x => x.country))]
@@ -38,31 +49,33 @@ const Weather = () => {
                 availableCountries.push(element)
             }
         });
-        let permissions = navigator.permissions.query({ name: 'geolocation' })
-        if (permissions.then((result) => result.state === 'denied')) {
-            setSelectedData(getDefaultCity())
-        }
-        navigator.geolocation.getCurrentPosition(async (position) => {
-            try {
-                let city = {
-                    coords: {
-                        lat: position.coords.latitude,
-                        lon: position.coords.longitude
-                    }
-                }
-                console.log(city)
-                let result = await getWeatherByLocation(city)
-                if(result.status === 200) {
-                    setWeatherData(result)
-                }
-                else {
-                    setSelectedData(getDefaultCity())
-                }
-            } catch (error) {
-                console.error('Error fetching weather data:', error);
-                alert(error)
+
+        if (defaultHistories.length === 0) {
+            let permissions = navigator.permissions.query({ name: 'geolocation' })
+            if (permissions.then((result) => result.state === 'denied')) {
+                setSelectedData(getDefaultCity())
             }
-        });
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                try {
+                    let city = {
+                        coords: {
+                            lat: position.coords.latitude,
+                            lon: position.coords.longitude
+                        }
+                    }
+                    let result = await getWeatherByLocation(city)
+                    if (result.status === 200) {
+                        setWeatherData(result)
+                    }
+                    else {
+                        setSelectedData(getDefaultCity())
+                    }
+                } catch (error) {
+                    console.error('Error fetching weather data:', error);
+                    alert(error)
+                }
+            });
+        }
 
     }, [])
 
@@ -151,7 +164,9 @@ const Weather = () => {
         if (selectedData && selectedData !== null) {
             const isContains = histories.find(x => x.id === selectedData.id)
             if (!isContains) {
-                setHistories([...histories, selectedData])
+                const newHistories = [...histories, selectedData]
+                setHistories(newHistories)
+                localStorage.setItem('searchHistory', JSON.stringify(newHistories));
             }
         }
         //getData
@@ -182,7 +197,7 @@ const Weather = () => {
                 backgroundRepeat: 'no-repeat',
                 height: '100%'
             }}>
-            <div className="w-19/20 md:w-2/3 p-6">
+            <div className="w-full p-6 px-10">
                 <div className="flex items-center bg-white/50 rounded-lg p-2 mb-4">
                     <input
                         type="text"
