@@ -1,4 +1,4 @@
-# React Weather App
+# Weather App By Ken Lee
 
 This project is a simple weather application built using React and Tailwind CSS. It allows users to search for weather information by city or country.
 
@@ -28,7 +28,7 @@ This project is a simple weather application built using React and Tailwind CSS.
 
     ```bash
     git clone <repository_url>
-    cd react-weather-app
+    cd weather-app
     ```
 
 2.  **Install dependencies:**
