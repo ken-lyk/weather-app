@@ -2,6 +2,8 @@
 
 This project is a simple weather application built using React and Tailwind CSS. It allows users to search for weather information by city or country.
 
+**Live Demo:**  [https://weather-app-1ujj.onrender.com/](https://weather-app-1ujj.onrender.com/)
+
 ## Features
 
 *   **Searchable Location:**  Users can enter a city or country name to retrieve weather data.
