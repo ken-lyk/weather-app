@@ -60,6 +60,8 @@ const WeatherInfo = ({ weatherData }) => {
             </div>
             <div className="flex items-center justify-between text-gray-700 text-ms">
                 <div>Sunrise 🌅: {formatTime(sunrise)}</div>
+            </div>
+            <div className="flex items-center justify-between text-gray-700 text-ms">
                 <div>Sunset 🌇: {formatTime(sunset)}</div>
             </div>
         </>
