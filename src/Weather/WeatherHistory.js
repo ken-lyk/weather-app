@@ -26,12 +26,14 @@ const WeatherHistory = ({ historyData, onSelect, onDelete }) => {
                     >
                         🔍
                     </button>
-                    <button
-                        onClick={() => onDelete(item.id)}
-                        className="bg-gray-300 rounded-full w-7 h-7 flex items-center justify-center ml-2 hover:bg-gray-200"
-                    >
-                        🗑
-                    </button>
+                    {historyData.length > 1 &&
+                        <button
+                            onClick={() => onDelete(item.id)}
+                            className="bg-gray-300 rounded-full w-7 h-7 flex items-center justify-center ml-2 hover:bg-gray-200"
+                        >
+                            🗑
+                        </button>
+                    }
                 </div>
             </div>
         )
@@ -63,11 +65,13 @@ const WeatherHistory = ({ historyData, onSelect, onDelete }) => {
                     >
                         🔍
                     </button>
-                    <button className="bg-white/70 rounded-full w-8 h-8 flex items-center justify-center backdrop-blur-sm hover:bg-gray-100 transition-colors"
-                        onClick={() => onDelete(item.id)}
-                    >
-                        🗑
-                    </button>
+                    {historyData.length > 1 &&
+                        <button className="bg-white/70 rounded-full w-8 h-8 flex items-center justify-center backdrop-blur-sm hover:bg-gray-100 transition-colors"
+                            onClick={() => onDelete(item.id)}
+                        >
+                            🗑
+                        </button>
+                    }
                 </div>
             </li>
         )
