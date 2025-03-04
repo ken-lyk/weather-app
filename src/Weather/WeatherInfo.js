@@ -83,7 +83,7 @@ const WeatherInfo = ({ weatherData }) => {
                     </div>
                     <div className="flex w-1/2 w-full items-center justify-end">
                         <img src={iconUrl} alt={weatherDescription} className="w-24 h-24" />
-                        {!isMobile && <span className="text-sm">{weatherDescription}</span>}
+                        <span className="text-sm">{weatherDescription}</span>
                     </div>
                 </div>
                 {isMobile && renderMobileView()}
