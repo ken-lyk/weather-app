@@ -79,7 +79,7 @@ const WeatherInfo = ({ weatherData }) => {
                 <div className="text-gray-700 font-semibold text-sm mb-2">Today's Weather</div>
                 <div className='flex'>
                     <div className="flex w-1/2 items-center mb-3">
-                        <span className="text-8xl font-bold light:text-purple-600 mr-2 dark:text-purple-600"> {kelvinToCelsius(temp)}°</span>
+                        <span className="text-8xl font-bold text-purple-600 mr-2"> {kelvinToCelsius(temp)}°</span>
                     </div>
                     <div className="flex w-1/2 w-full items-center justify-end">
                         <img src={iconUrl} alt={weatherDescription} className="w-24 h-24" />
