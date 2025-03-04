@@ -113,6 +113,24 @@ const Weather = () => {
         }
     };
 
+    const onRandomCityClicked = (event) => {
+        const randomIndex = Math.floor(Math.random() * Cities.length);
+        const city = Cities[randomIndex]
+
+        if (city) {
+            let location = {
+                city: city,
+                countryCode: city?.country,
+                countryName: Countries.find(x => x.code === city?.country)?.name ?? '',
+                id: city?.id,
+                created: new Date(),
+                index: histories.length
+            }
+            setSelectedData(location)
+            setSearchCity('')
+        }
+    };
+
     const getWeatherData = async () => {
         try {
             if (selectedData && selectedData !== null) {
@@ -174,6 +192,12 @@ const Weather = () => {
                         placeholder={"Country / City"}
                         className="bg-transparent border-none p-2 flex-grow text-gray-800 focus:outline-none"
                     />
+                    <button
+                        onClick={onRandomCityClicked}
+                        className="bg-purple-600 text-white rounded-md px-3 py-2 hover:bg-purple-500">
+                        🎲
+                    </button>
+                    <div className='p-1' />
                     <button 
                         onClick={onSearchCityClicked}
                         className="bg-purple-600 text-white rounded-md px-3 py-2 hover:bg-purple-500">
