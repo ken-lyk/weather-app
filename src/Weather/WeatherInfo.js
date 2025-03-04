@@ -79,9 +79,9 @@ const WeatherInfo = ({ weatherData }) => {
                     <div className="flex w-1/2 items-center mb-3">
                         <span className="text-8xl font-bold text-purple-600 mr-2"> {kelvinToCelsius(temp)}°</span>
                     </div>
-                    <div className="flex w-1/2 items-center justify-end">
-                        <img src={iconUrl} alt={weatherDescription} className="w-24 h-24 mr-2" />
-                        <p className="text-sm">{weatherDescription}</p>
+                    <div className="flex w-1/2 w-full items-center justify-end">
+                        <img src={iconUrl} alt={weatherDescription} className="w-24 h-24" />
+                        {!isMobile && <span className="text-sm">{weatherDescription}</span>}
                     </div>
                 </div>
                 {isMobile && renderMobileView()}
