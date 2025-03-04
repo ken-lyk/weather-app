@@ -17,6 +17,7 @@ This project is a simple weather application built using React and Tailwind CSS.
 *   **Geolocation access:** The app will get the access of geolocation if user gives it the permission to.
 *   **Random City Selection:** (NEW) Dynamically displays weather information for a randomly selected city on initial load. A "🎲" button allows users to select a new random city.
 *   **Progressive Web App (PWA) Support:**  Can be installed on users' devices, offering offline access and app-like experience.
+*   **Local Storage Integration:** (NEW) Saves the search location history in `localStorage` so that it persists across browser sessions. Users can delete individual items from the search history.
 
 ## Technologies Used
 
