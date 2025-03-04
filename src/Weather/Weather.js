@@ -182,7 +182,7 @@ const Weather = () => {
                 backgroundRepeat: 'no-repeat',
                 height: '100%'
             }}>
-            <div className="w-9/10 md:w-1/2 p-6">
+            <div className="w-19/20 md:w-2/3 p-6">
                 <div className="flex items-center bg-white/50 rounded-lg p-2 mb-4">
                     <input
                         type="text"

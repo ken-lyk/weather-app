@@ -24,7 +24,7 @@ const WeatherInfo = ({ weatherData }) => {
     };
 
     const renderDesktopView = () => {
-        return <>
+        return <div>
             <div className="text-gray-700 text-ms">
                 H: {kelvinToCelsius(temp_max)}° L: {kelvinToCelsius(temp_min)}°
                 Feels like: {kelvinToCelsius(feels_like)} °C
@@ -41,11 +41,11 @@ const WeatherInfo = ({ weatherData }) => {
             <div className="flex items-center justify-between text-gray-700 text-ms">
                 <div>Sunset 🌇: {formatTime(sunset)}</div>
             </div>
-        </>
+        </div>
     }
 
     const renderMobileView = () => {
-        return <>
+        return <div className='w-full'>
             <div className="text-gray-700 text-ms">
                 H: {kelvinToCelsius(temp_max)}° L: {kelvinToCelsius(temp_min)}°
                 Feels like: {kelvinToCelsius(feels_like)} °C
@@ -64,12 +64,12 @@ const WeatherInfo = ({ weatherData }) => {
             <div className="flex items-center justify-between text-gray-700 text-ms">
                 <div>Sunset 🌇: {formatTime(sunset)}</div>
             </div>
-        </>
+        </div>
     }
 
     return (
-        <>
-            <div className="flex items-center mb-2" style={{
+        <div className='min-w-[400px]'>
+            <div className="flex w-full items-center mb-2" style={{
                 flexDirection: 'row-reverse',
                 marginTop: -120,
             }}>
@@ -89,8 +89,7 @@ const WeatherInfo = ({ weatherData }) => {
                 {isMobile && renderMobileView()}
                 {!isMobile && renderDesktopView()}
             </div>
-            
-        </>
+        </div>
     );
 };
 
