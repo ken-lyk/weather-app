@@ -1,8 +1,11 @@
-# Weather App By Ken Lee
+# Weather App
 
 This project is a simple weather application built using React and Tailwind CSS. It allows users to search for weather information by city or country.
 
 **Live Demo:**  [https://weather-app-1ujj.onrender.com/](https://weather-app-1ujj.onrender.com/)
+
+**Created by:** [ken-lyk]
+**Last Worked On:** 2024-03-04
 
 ## Features
 
@@ -12,6 +15,8 @@ This project is a simple weather application built using React and Tailwind CSS.
 *   **Responsive Design:**  The app is designed to be responsive and work well on various screen sizes (desktop and mobile).
 *   **Clear and Simple UI:** Leverages Tailwind CSS for a clean and modern look.
 *   **Geolocation access:** The app will get the access of geolocation if user gives it the permission to.
+*   **Random City Selection:** (NEW) Dynamically displays weather information for a randomly selected city on initial load. A "🎲" button allows users to select a new random city.
+
 
 ## Technologies Used
 
