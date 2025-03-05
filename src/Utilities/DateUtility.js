@@ -19,6 +19,11 @@ export function formatTime(timestamp) {
     return date.toLocaleTimeString();
 };
 
+export function formatDate(timestamp) {
+    const date = new Date(timestamp * 1000);
+    return convertDate(date);
+};
+
 export function convertShortDate(dateString) {
     const date = new Date(dateString);
 

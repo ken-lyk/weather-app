@@ -79,17 +79,18 @@ const WeatherHistory = ({ historyData, onSelect, onDelete }) => {
 
     const renderHistoryList = () => {
         if(historyData && historyData !== null) {
+            let sortedHistories = historyData.sort((x, y) => new Date(y.created) - new Date(x.created))
             if(isMobile) {
                 return (
                     <ul>
-                        {historyData.map(element => {
+                        {sortedHistories.map(element => {
                             return renderHistoryItemMobileView(element)
                         })}
                     </ul>
                 )
             }
             else {
-                return historyData.map(element => {
+                return sortedHistories.map(element => {
                     return renderHistoryItem(element)
                 });
             }

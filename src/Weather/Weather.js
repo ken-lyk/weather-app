@@ -151,6 +151,14 @@ const Weather = () => {
                 if (city) {
                     let result = await getWeatherByLocation(city)
                     setWeatherData(result)
+                    if(result.dt && result.dt !== null) {
+                        histories.forEach(element => {
+                            if(element.id === selectedData.id) {
+                                element.created = new Date();
+                            }
+                        });
+                        localStorage.setItem('searchHistory', JSON.stringify(histories));
+                    }
                     setSelectedData(null)
                 }
             }

@@ -1,4 +1,4 @@
-import { convertDate, convertShortDate, formatTime } from './DateUtility';
+import { convertDate, convertShortDate, formatDate, formatTime } from './DateUtility';
 
 describe('Date Utility Functions', () => {
     describe('convertDate', () => {
@@ -58,6 +58,28 @@ describe('Date Utility Functions', () => {
         it('should correctly format a timestamp to a locale-specific time string', () => {
             const timestamp = 1677648000; // Example timestamp (March 1, 2023 00:00:00 GMT)
             const result = formatTime(timestamp);
+            expect(result).toBeDefined(); // Check that the function returns a value
+        });
+
+        it('should return a different value after passing a different timestamp', () => {
+            const timestamp = 1277648000;
+            const secondTimestamp = 1677734400;
+            const result1 = formatTime(timestamp);
+            const result2 = formatTime(secondTimestamp);
+            expect(result1).not.toEqual(result2);
+        });
+        it('should handle an invalid timestamp and return a valid string', () => {
+            const invalidTimestamp = 'invalid timestamp';
+            const result = formatTime(invalidTimestamp);
+            expect(result).toBeDefined(); // Check that the function returns a value
+
+        });
+    });
+
+    describe('formatDate', () => {
+        it('should correctly format a timestamp to a locale-specific time string', () => {
+            const timestamp = 1677648000; // Example timestamp (March 1, 2023 00:00:00 GMT)
+            const result = formatDate(timestamp);
             expect(result).toBeDefined(); // Check that the function returns a value
         });
 
