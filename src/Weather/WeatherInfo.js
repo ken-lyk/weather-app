@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertShortDate, formatDate, formatTime } from '../Utilities/DateUtility';
+import { convertShortDate, formatDate, formatShortDate, formatTime } from '../Utilities/DateUtility';
 import sun from './../Assets/sun.png'
 import { toTitleCase } from '../Utilities/StringUtility';
 import { useMediaQuery } from 'react-responsive';
@@ -53,7 +53,7 @@ const WeatherInfo = ({ weatherData }) => {
             </div>
             <div className="flex items-center justify-between text-gray-700 text-ms">
                 <div className='font-bold'>{location}, {country}</div>
-                <div>{convertShortDate(new Date())}</div>
+                <div>{formatShortDate(dt)}</div>
             </div>
             <div className="flex items-center justify-between text-gray-700 text-ms">
                 <div>Humidity: {humidity}%</div>
