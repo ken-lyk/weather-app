@@ -25,6 +25,7 @@ const WeatherInfo = ({ weatherData }) => {
     };
 
     const renderDesktopView = () => {
+        //dt -> api response date
         return <div>
             <div className="text-gray-700 text-ms">
                 H: {kelvinToCelsius(temp_max)}° L: {kelvinToCelsius(temp_min)}°
@@ -46,6 +47,7 @@ const WeatherInfo = ({ weatherData }) => {
     }
 
     const renderMobileView = () => {
+        //dt -> api response date
         return <div className='w-full'>
             <div className="text-gray-700 text-ms">
                 H: {kelvinToCelsius(temp_max)}° L: {kelvinToCelsius(temp_min)}°

@@ -49,6 +49,7 @@ const WeatherHistory = ({ historyData, onSelect, onDelete }) => {
             location = item?.countryCode
         }
 
+        //item.created -> country / city search date
         return (
             <li
                 key={item.index}
